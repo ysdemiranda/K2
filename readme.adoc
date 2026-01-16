@@ -1,5 +1,7 @@
 = K2, a kernel for embedded C++ projects
 
+> Time is a powerful thing, if you know how to use it.
+
 == What this claims to be
 *K2 is a small C++ FIFO task manager that unapologetically refers to its central object as a kernel, despite making no claim to operating systems, privilege rings, or academic rigor.*
 

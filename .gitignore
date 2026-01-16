@@ -2,6 +2,6 @@
 build/*
 
 # Generated files
-api/k2.hxx
+source/k2.cxx
 
 
