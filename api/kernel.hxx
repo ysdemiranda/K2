@@ -29,7 +29,7 @@ namespace K2 {
             _kstruct_t* _kstruct;
             
         public:
-            /// @brief Kernel injectable Task class specification
+            /// @brief Task Subsystem API specification
             class Task;
 
         public:
