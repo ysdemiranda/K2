@@ -1,0 +1,6 @@
+= K2, a kernel for embedded C++ projects
+
+== What This Claims to Be
+*K2 is a small C++ FIFO task manager that unapologetically refers to its central object as a kernel, despite making no claim to operating systems, privilege rings, or academic rigor.* +
+It exists to enqueue work, dequeue it deterministically, and get out of the way. Built by an autodidact with more curiosity than credentials and a preference for things that are simple, explicit, and fast over things that are fashionable.
+

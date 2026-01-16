@@ -1,0 +1,11 @@
+#ifndef K2_LIBRARY_INCLUDE
+#define K2_LIBRARY_INCLUDE
+
+#include "api/kernel.hxx"
+#include "api/clock.hxx"
+#include "api/schedule.hxx"
+#include "api/task.hxx"
+
+#include "api/k2.hxx"
+
+#endif
