@@ -23,6 +23,11 @@ uint64_t Kernel::Task::GetID()
     return _task->id;
 }
 
+uint64_t Kernel::Task::GetDelta()
+{
+    return _task->delta;
+}
+
 bool Kernel::Task::IsActive()
 {
     return (_task->state == _task_t::RUN);

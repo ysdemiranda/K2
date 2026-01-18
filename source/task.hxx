@@ -19,6 +19,7 @@ struct Kernel::Task::_task_t
 
     uint64_t id = 0;
     uint64_t wait = 0;
+    uint64_t delta = 0;
 
     bool awake();
 };

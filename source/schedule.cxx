@@ -28,6 +28,8 @@ bool Kernel::Schedule::_sched_t::run(uint64_t cdelta)
         Task *t = it.second;
         if (t != nullptr && t->_task->id)
         {
+            t->_task->delta += cdelta;
+
             switch (t->_task->state)
             {
             case Task::_task_t::NEW:
@@ -36,6 +38,7 @@ bool Kernel::Schedule::_sched_t::run(uint64_t cdelta)
                 break;
             case Task::_task_t::RUN:
                 t->Payload();
+                t->_task->delta = 0;
                 break;
             case Task::_task_t::DELAY_T:
                 t->_task->wait -= _min(cdelta, t->_task->wait);
@@ -86,7 +89,6 @@ uint64_t Kernel::Schedule::Load(Task *t)
         return 0;
     uint64_t new_id = _sched->idctr++;
     t->_task->id = new_id;
-    //_sched->tasks[new_id] = t;
     _sched->fresh.push_back(t);
     return new_id;
 }
@@ -109,7 +111,7 @@ Kernel::Task *Kernel::Schedule::Find(uint64_t id)
 
 uint64_t Kernel::Schedule::Count()
 {
-    return _sched->tasks.size();
+    return _sched->tasks.size() + _sched->fresh.size();
 }
 
 } // namespace K2

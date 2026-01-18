@@ -69,6 +69,10 @@ class Kernel::Task
     /// @return ID of task, 0 if none issued or revoked
     uint64_t GetID();
 
+    /// @brief Retrieves nanoseconds past since last payload execution.
+    /// @return Unsigned 64-bit integer nanoseconds past
+    uint64_t GetDelta();
+
     /// @brief Check if the task is primed for running its payload this or next cycle
     /// @return true if this task will run this or next cycle, false if not
     bool IsActive();
