@@ -71,6 +71,12 @@ bool Kernel::Schedule::_sched_t::run(uint64_t cdelta)
     }
     trash.clear();
 
+    for (auto it : fresh)
+    {
+        tasks[it->GetID()] = it;
+    }
+    fresh.clear();
+
     return true;
 }
 
@@ -80,7 +86,8 @@ uint64_t Kernel::Schedule::Load(Task *t)
         return 0;
     uint64_t new_id = _sched->idctr++;
     t->_task->id = new_id;
-    _sched->tasks[new_id] = t;
+    //_sched->tasks[new_id] = t;
+    _sched->fresh.push_back(t);
     return new_id;
 }
 
