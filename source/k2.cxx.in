@@ -4,18 +4,20 @@
  * ====================================================================
  */
 
- #include "../api/k2.hxx"
+#include "../api/k2.hxx"
 
- namespace K2 {
-    const version_t Version() {
-        return (version_t){
-            .patch = @K2_VERSION_PATCH@,
-            .minor = @K2_VERSION_MINOR@,
-            .major = @K2_VERSION_MAJOR@,
-        };
-    }
+namespace K2
+{
+const Version GetVersion()
+{
+    return (Version)
+    {
+        .patch = @K2_VERSION_PATCH@, .minor = @K2_VERSION_MINOR@, .major = @K2_VERSION_MAJOR@,
+    };
+}
 
-    const char* Platform() {
-        return "@K2_PLATFORM@";
-    }
- }
+const char *GetPlatform()
+{
+    return "@K2_PLATFORM@";
+}
+} // namespace K2

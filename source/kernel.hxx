@@ -3,11 +3,13 @@
 
 #include "../api/kernel.hxx"
 
-namespace K2 {
-    struct Kernel::_kstruct_t {
-        Clock* clock;
-        Schedule* schedule;
-    };
-}
+namespace K2
+{
+struct Kernel::_kstruct_t
+{
+    Clock *clock;
+    Schedule *schedule;
+};
+} // namespace K2
 
 #endif

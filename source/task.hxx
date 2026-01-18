@@ -3,17 +3,25 @@
 
 #include "../api/task.hxx"
 
-namespace K2 {
-    struct Kernel::Task::_task_t {
-        enum : uint8_t {
-            NEW, RUN, DELAY_T, DELAY_C, SLEEP, END
-        } state = NEW;
+namespace K2
+{
+struct Kernel::Task::_task_t
+{
+    enum : uint8_t
+    {
+        NEW,
+        RUN,
+        DELAY_T,
+        DELAY_C,
+        SLEEP,
+        END
+    } state = NEW;
 
-        uint64_t id = 0;
-        uint64_t wait = 0;
+    uint64_t id = 0;
+    uint64_t wait = 0;
 
-        bool awake();
-    };
-}
+    bool awake();
+};
+} // namespace K2
 
 #endif
