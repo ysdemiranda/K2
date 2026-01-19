@@ -25,7 +25,6 @@ class Kernel::Task
     /// @brief Internal structure access
     _task_t *_task;
 
-  protected:
     /// @brief Overrideable initialization function. It is recommended \
     /// @brief to call constructors and initialize variables here. This function \
     /// @brief is called only the first time after it is introduced to the schedule
