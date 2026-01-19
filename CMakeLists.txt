@@ -6,7 +6,7 @@ project( K2 LANGUAGES C CXX )
 set(K2_PLATFORM "${CMAKE_SYSTEM_PROCESSOR}")
 set(K2_VERSION_MAJOR 0)
 set(K2_VERSION_MINOR 1)
-set(K2_VERSION_PATCH 10)
+set(K2_VERSION_PATCH 12)
 
 # K2 meta generation
 configure_file(source/k2.cxx.in ${CMAKE_CURRENT_LIST_DIR}/source/k2.cxx)
