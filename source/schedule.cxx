@@ -100,15 +100,6 @@ void Kernel::Schedule::Remove(uint64_t id)
     _sched->trash.push_back(id);
 }
 
-Kernel::Task *Kernel::Schedule::Find(uint64_t id)
-{
-    if (!id)
-        return nullptr;
-    if (_sched->tasks.find(id) == _sched->tasks.end())
-        return nullptr;
-    return _sched->tasks[id];
-}
-
 uint64_t Kernel::Schedule::Count()
 {
     return _sched->tasks.size() + _sched->fresh.size();

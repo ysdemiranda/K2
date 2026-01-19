@@ -25,11 +25,6 @@ class Kernel::Schedule
     /// @param task_id ID of task to remove
     void Remove(uint64_t);
 
-    /// @brief Finds pointer to task instance
-    /// @param task_id ID of task to find
-    /// @return a pointer to the Task instance referenced by given ID or nullptr if it is not loaded
-    Task *Find(uint64_t);
-
     /// @brief Number of task instances loaded in the kernel schedule
     /// @return Loaded task count
     uint64_t Count();
