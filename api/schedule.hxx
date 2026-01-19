@@ -21,7 +21,7 @@ class Kernel::Schedule
     /// @return generated task ID or 0 if task could not be loaded
     uint64_t Load(Task *);
 
-    /// @brief Forcibly removes a task from the schedule, does not guarantee a call to Clean()
+    /// @brief Forcibly removes a task from the schedule, skips calling Clean()
     /// @param task_id ID of task to remove
     void Remove(uint64_t);
 
