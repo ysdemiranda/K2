@@ -93,13 +93,6 @@ uint64_t Kernel::Schedule::Load(Task *t)
     return new_id;
 }
 
-void Kernel::Schedule::Remove(uint64_t id)
-{
-    if (!id)
-        return;
-    _sched->trash.push_back(id);
-}
-
 uint64_t Kernel::Schedule::Count()
 {
     return _sched->tasks.size() + _sched->fresh.size();
