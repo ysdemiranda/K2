@@ -1,5 +1,5 @@
 #ifndef K2_SCHEDULE_HXX
-#define K2_SCHEDULE_UXX
+#define K2_SCHEDULE_HXX
 
 #include "../api/kernel.hxx"
 #include "../api/schedule.hxx"
