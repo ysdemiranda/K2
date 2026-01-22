@@ -20,8 +20,7 @@ Kernel::Schedule::~Schedule()
 
 bool Kernel::Schedule::_sched_t::run(uint64_t cdelta)
 {
-    std::list<uint64_t> trash = this->trash;
-    this->trash.clear();
+    std::list<uint64_t> trash;
 
     for (auto it : tasks)
     {
