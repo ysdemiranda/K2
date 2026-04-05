@@ -20,4 +20,19 @@ const char *GetPlatform()
 {
     return "@K2_PLATFORM@";
 }
+
+const char *GetVariant()
+{
+    return "@K2_VARIANT@";
+}
+
+const char *GetCompilerID()
+{
+    return "@K2_COMPILER_ID@";
+}
+
+const char *GetCompilerVersion()
+{
+    return "@K2_COMPILER_VERSION@";
+}
 } // namespace K2

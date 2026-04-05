@@ -58,6 +58,8 @@ bool Kernel::Schedule::_sched_t::run(uint64_t cdelta)
             case Task::_task_t::END:
                 t->Clean();
                 t->_task->id = 0;
+                t->_task->delta = 0;
+                t->_task->wait = 0;
                 t->_task->state = Task::_task_t::NEW;
                 trash.push_back(it.first);
                 break;

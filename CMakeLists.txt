@@ -3,10 +3,15 @@ cmake_minimum_required( VERSION 4.2.0 )
 project( K2 LANGUAGES C CXX )
 
 # K2 Version
-set(K2_PLATFORM "${CMAKE_SYSTEM_PROCESSOR}")
 set(K2_VERSION_MAJOR 0)
 set(K2_VERSION_MINOR 1)
-set(K2_VERSION_PATCH 12)
+set(K2_VERSION_PATCH 15)
+
+# Build Info
+set(K2_PLATFORM "${CMAKE_SYSTEM_PROCESSOR}")
+set(K2_VARIANT "${CMAKE_BUILD_TYPE}")
+set(K2_COMPILER_ID "${CMAKE_CXX_COMPILER_ID}")
+set(K2_COMPILER_VERSION "${CMAKE_CXX_COMPILER_VERSION}")
 
 # K2 meta generation
 configure_file(source/k2.cxx.in ${CMAKE_CURRENT_LIST_DIR}/source/k2.cxx)
@@ -17,7 +22,6 @@ add_library( K2
     source/clock.cxx
     source/schedule.cxx
     source/task.cxx
-
     source/k2.cxx
 )
 
