@@ -24,6 +24,10 @@ class Kernel::Schedule
     /// @brief Number of task instances loaded in the kernel schedule
     /// @return Loaded task count
     uint64_t Count();
+
+    /// @brief Maximum amount of tasks, eg. slot count
+    /// @return Total slot count
+    uint64_t Slots();
 };
 } // namespace K2
 

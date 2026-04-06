@@ -100,4 +100,9 @@ uint64_t Kernel::Schedule::Count()
     return _sched->occupied;
 }
 
+uint64_t Kernel::Schedule::Slots()
+{
+    return K2_SCHEDULE_SLOTS;
+}
+
 } // namespace K2
