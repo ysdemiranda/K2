@@ -13,8 +13,12 @@ set(K2_VARIANT "${CMAKE_BUILD_TYPE}")
 set(K2_COMPILER_ID "${CMAKE_CXX_COMPILER_ID}")
 set(K2_COMPILER_VERSION "${CMAKE_CXX_COMPILER_VERSION}")
 
+# Build Configuration
+set(K2_SCHEDULE_SLOTS 32) # Maximum number of tasks
+
 # K2 meta generation
 configure_file(source/k2.cxx.in ${CMAKE_CURRENT_LIST_DIR}/source/k2.cxx)
+configure_file(source/config.hxx.in ${CMAKE_CURRENT_LIST_DIR}/source/config.hxx)
 
 # libK2
 add_library( K2

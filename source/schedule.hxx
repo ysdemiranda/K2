@@ -4,18 +4,29 @@
 #include "../api/kernel.hxx"
 #include "../api/schedule.hxx"
 
-#include <list>
-#include <map>
+#include "config.hxx"
 
 namespace K2
 {
-struct Kernel::Schedule::_sched_t
-{
-    std::map<uint64_t, Kernel::Task *> tasks;
-    std::list<Kernel::Task *> fresh;
-    uint64_t idctr = 1;
-    bool run(uint64_t);
-};
+    struct _slot_t
+    {
+        union {
+            uint64_t state = 0;
+            struct {
+                unsigned OCCUPIED : 1;
+                unsigned : 63;
+            };
+        };
+        K2::Kernel::Task* task = nullptr;
+    };
+    
+    struct Kernel::Schedule::_sched_t
+    {
+        _slot_t slots[K2_SCHEDULE_SLOTS];
+        uint64_t occupied = 0;
+        uint64_t idctr = 1;
+        void run(uint64_t);
+    };
 } // namespace K2
 
 #endif

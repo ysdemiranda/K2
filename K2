@@ -1,5 +1,5 @@
-#ifndef K2_LIBRARY_INCLUDE
-#define K2_LIBRARY_INCLUDE
+#ifndef INCLUDE_K2
+#define INCLUDE_K2
 
 #include "api/k2.hxx"
 

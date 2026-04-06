@@ -18,85 +18,86 @@ Kernel::Schedule::~Schedule()
     delete (_sched);
 }
 
-bool Kernel::Schedule::_sched_t::run(uint64_t cdelta)
+void Kernel::Schedule::_sched_t::run(uint64_t cdelta)
 {
-    std::list<uint64_t> trash;
-
-    for (auto it : tasks)
+    if( !occupied ) return;
+    for (uint64_t i = 0; i < K2_SCHEDULE_SLOTS; i++)
     {
-        Task *t = it.second;
-        if (t != nullptr && t->_task->id)
-        {
-            t->_task->delta += cdelta;
+        _slot_t* slot = slots + i;
+        if( !slot->OCCUPIED || slot->task == nullptr) continue;
 
-            switch (t->_task->state)
-            {
+        Task::_task_t* t = slot->task->_task;
+        t->delta += cdelta;
+
+        switch(t->state)
+        {
             case Task::_task_t::NEW:
-                t->_task->state = Task::_task_t::RUN;
-                t->Initialize();
+                t->state = Task::_task_t::RUN;
+                slot->task->Initialize();
                 break;
             case Task::_task_t::RUN:
-                t->Payload();
-                t->_task->delta = 0;
+                slot->task->Payload();
+                slot->task->_task->delta = 0;
                 break;
             case Task::_task_t::DELAY_T:
-                t->_task->wait -= _min(cdelta, t->_task->wait);
-                if (!t->_task->wait)
+                t->wait -= _min(cdelta, t->wait);
+                if (!t->wait)
                 {
-                    t->_task->state = Task::_task_t::RUN;
+                    t->state = Task::_task_t::RUN;
                 }
                 break;
             case Task::_task_t::DELAY_C:
-                t->_task->wait -= _min(1, t->_task->wait);
-                if (!t->_task->wait)
+                t->wait -= _min(1, t->wait);
+                if (!t->wait)
                 {
-                    t->_task->state = Task::_task_t::RUN;
+                    t->state = Task::_task_t::RUN;
                 }
                 break;
             case Task::_task_t::SLEEP:
                 break;
             case Task::_task_t::END:
-                t->Clean();
-                t->_task->id = 0;
-                t->_task->delta = 0;
-                t->_task->wait = 0;
-                t->_task->state = Task::_task_t::NEW;
-                trash.push_back(it.first);
+                slot->task->Clean();
+                t->id = 0;
+                t->delta = 0;
+                t->wait = 0;
+                t->state = Task::_task_t::NEW;
+                slot->OCCUPIED = 0;
+                slot->task = nullptr;
+                occupied--;
                 break;
             default:
                 break;
-            }
         }
     }
-
-    for (auto it : trash)
-    {
-        tasks.erase(it);
-    }
-    trash.clear();
-
-    for (auto it : fresh)
-    {
-        tasks[it->GetID()] = it;
-    }
-    fresh.clear();
-
-    return true;
 }
 
 uint64_t Kernel::Schedule::Load(Task *t)
 {
     if (t == nullptr || t->_task->id)
         return 0;
+
+    if (_sched->occupied == K2_SCHEDULE_SLOTS)
+        return 0;
+
     uint64_t new_id = _sched->idctr++;
     t->_task->id = new_id;
-    _sched->fresh.push_back(t);
+
+    for(uint64_t i = 0; i < K2_SCHEDULE_SLOTS; i++)
+    {
+        _slot_t* slot = _sched->slots + i;
+        slot->OCCUPIED = 1;
+        slot->task = t;
+        _sched->occupied++;
+        break;
+    }
+
     return new_id;
+
 }
 
 uint64_t Kernel::Schedule::Count()
 {
-    return _sched->tasks.size() + _sched->fresh.size();
+    return _sched->occupied;
 }
 
 } // namespace K2
