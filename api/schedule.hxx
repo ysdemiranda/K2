@@ -12,7 +12,7 @@ class Kernel::Schedule
   private:
     struct _sched_t;
     _sched_t *_sched;
-    Schedule();
+    Schedule(uint64_t);
     ~Schedule();
 
   public:

@@ -13,6 +13,7 @@ struct Kernel::Task::_task_t
         RUN,
         DELAY_T,
         DELAY_C,
+        DELAY_M,
         SLEEP,
         END
     } state = NEW;

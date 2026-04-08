@@ -4,28 +4,17 @@
 #include "../api/kernel.hxx"
 #include "../api/schedule.hxx"
 
-#include "config.hxx"
-
 namespace K2
 {
-    struct _slot_t
-    {
-        union {
-            uint64_t state = 0;
-            struct {
-                unsigned OCCUPIED : 1;
-                unsigned : 63;
-            };
-        };
-        K2::Kernel::Task* task = nullptr;
-    };
+    struct _slot_t;
     
     struct Kernel::Schedule::_sched_t
     {
-        _slot_t slots[K2_SCHEDULE_SLOTS];
+        _slot_t* slots = nullptr;
+        uint64_t num_slots = 0;
         uint64_t occupied = 0;
         uint64_t idctr = 1;
-        void run(uint64_t);
+        void run(uint64_t, uint64_t);
     };
 } // namespace K2
 

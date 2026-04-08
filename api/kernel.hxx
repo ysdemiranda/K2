@@ -12,7 +12,8 @@ class Kernel
   public:
     /// @brief Constructs a K2::Kernel object
     /// @param time_ns_fnptr pointer to a function that returns the current time in nanoseconds
-    Kernel(uint64_t (*)());
+    /// @param slot_count maximum number of loaded tasks, eg. slots
+    Kernel(uint64_t (*)(), uint64_t);
 
     /// @brief Destroys the K2::Kernel object
     ~Kernel();

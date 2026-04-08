@@ -3,8 +3,15 @@
 > Time is a powerful thing, if you know how to use it.
 
 == What this claims to be
-*K2 is a small C++ FIFO task manager that unapologetically refers to its central object as a kernel, despite making no claim to operating systems, privilege rings, or academic rigor.*
+*K2 is a small real-time C++ task manager that unapologetically refers to its central object as a kernel, despite making no claim to operating systems, privilege rings, or academic rigor.*
 
 It exists to enqueue work, dequeue it deterministically, and get out of the way. Built by an autodidact with more curiosity than credentials and a preference for things that are simple, explicit, and fast over things that are fashionable.
 
 *100% Human Written Code*
+
+== Roadmap
+
+Things I would like to add before I make critical decisions on the API
+
+* Error system with reporting and handling capabilities
+

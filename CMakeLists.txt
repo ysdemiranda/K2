@@ -4,8 +4,8 @@ project( K2 LANGUAGES C CXX )
 
 # K2 Version
 set(K2_VERSION_MAJOR 0)
-set(K2_VERSION_MINOR 1)
-set(K2_VERSION_PATCH 15)
+set(K2_VERSION_MINOR 2)
+set(K2_VERSION_PATCH 4)
 
 # Build Info
 set(K2_PLATFORM "${CMAKE_SYSTEM_PROCESSOR}")
@@ -13,12 +13,8 @@ set(K2_VARIANT "${CMAKE_BUILD_TYPE}")
 set(K2_COMPILER_ID "${CMAKE_CXX_COMPILER_ID}")
 set(K2_COMPILER_VERSION "${CMAKE_CXX_COMPILER_VERSION}")
 
-# Build Configuration
-set(K2_SCHEDULE_SLOTS 32) # Maximum number of tasks
-
 # K2 meta generation
 configure_file(source/k2.cxx.in ${CMAKE_CURRENT_LIST_DIR}/source/k2.cxx)
-configure_file(source/config.hxx.in ${CMAKE_CURRENT_LIST_DIR}/source/config.hxx)
 
 # libK2
 add_library( K2
