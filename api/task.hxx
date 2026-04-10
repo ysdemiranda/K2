@@ -56,7 +56,7 @@ class Kernel::Task
 
     /// @brief Delay calling the Payload() function until after \
     /// @brief moment in real-time.
-    /// @param  time moment to wait for
+    /// @param time moment to wait for
     void DelayUntil(uint64_t);
 
     /// @brief Puts the task in an idle state without removing it from the schedule

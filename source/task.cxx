@@ -56,9 +56,10 @@ void Kernel::Task::DelayIterations(uint64_t i)
     }
 }
 
-void Kernel::Task::DelayUntil(uint64_t t) {
-    if(_task->awake())
-    _task->state = _task_t::DELAY_M;
+void Kernel::Task::DelayUntil(uint64_t t)
+{
+    if (_task->awake())
+        _task->state = _task_t::DELAY_M;
     _task->wait = t;
 }
 
