@@ -13,11 +13,11 @@ namespace K2
 struct _slot_t
 {
     union {
-        uint64_t state = 0;
+        uint8_t state = 0;
         struct
         {
             unsigned OCCUPIED : 1;
-            unsigned : 63;
+            unsigned : 7;
         };
     };
     K2::Kernel::Task *task = nullptr;
@@ -45,7 +45,8 @@ void Kernel::Schedule::_sched_t::run(uint64_t cdelta, uint64_t rt)
 {
     if (!occupied)
         return;
-    for (uint64_t i = 0; i < num_slots; i++)
+
+    for (uint32_t i = 0; i < num_slots; i++)
     {
         _slot_t *slot = &(slots[i]);
         if (!slot->OCCUPIED || slot->task == nullptr)

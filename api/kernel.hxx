@@ -26,10 +26,10 @@ class Kernel
     class Schedule;
 
     /// @brief Internal kernel structure specification
-    struct _kstruct_t;
+    struct _kernel_t;
 
     /// @brief Internal kernel structure access
-    _kstruct_t *_kstruct;
+    _kernel_t *_kernel;
 
   public:
     /// @brief Task Subsystem API specification

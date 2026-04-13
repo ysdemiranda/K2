@@ -5,7 +5,7 @@
 
 namespace K2
 {
-struct Kernel::_kstruct_t
+struct Kernel::_kernel_t
 {
     Clock *clock;
     Schedule *schedule;

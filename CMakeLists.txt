@@ -5,7 +5,7 @@ project( K2 LANGUAGES C CXX )
 # K2 Version
 set(K2_VERSION_MAJOR 0)
 set(K2_VERSION_MINOR 2)
-set(K2_VERSION_PATCH 5)
+set(K2_VERSION_PATCH 7)
 
 # Build Info
 set(K2_PLATFORM "${CMAKE_SYSTEM_PROCESSOR}")
@@ -24,7 +24,6 @@ add_library( K2
     source/task.cxx
     source/k2.cxx
 )
-
 
 set_target_properties( K2 PROPERTIES
     OUTPUT_NAME "K2.${K2_PLATFORM}"

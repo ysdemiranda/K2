@@ -11,31 +11,31 @@ namespace K2
 
 Kernel::Kernel(uint64_t (*time_fnptr)(), uint64_t slots)
 {
-    _kstruct = new _kstruct_t();
-    _kstruct->clock = new Clock(time_fnptr);
-    _kstruct->schedule = new Schedule(slots);
+    _kernel = new _kernel_t();
+    _kernel->clock = new Clock(time_fnptr);
+    _kernel->schedule = new Schedule(slots);
 }
 
 Kernel::~Kernel()
 {
-    delete (_kstruct->clock);
-    delete (_kstruct->schedule);
-    delete (_kstruct);
+    delete (_kernel->clock);
+    delete (_kernel->schedule);
+    delete (_kernel);
 }
 
 Kernel::Clock *Kernel::GetClock()
 {
-    return _kstruct->clock;
+    return _kernel->clock;
 }
 
 Kernel::Schedule *Kernel::GetSchedule()
 {
-    return _kstruct->schedule;
+    return _kernel->schedule;
 }
 
 void Kernel::Cycle()
 {
-    _kstruct->clock->_clock->tick();
-    _kstruct->schedule->_sched->run(_kstruct->clock->_clock->delta, _kstruct->clock->_clock->cycle);
+    _kernel->clock->_clock->tick();
+    _kernel->schedule->_sched->run(_kernel->clock->_clock->delta, _kernel->clock->_clock->cycle);
 }
 } // namespace K2
