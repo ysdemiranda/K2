@@ -18,11 +18,6 @@ bool Kernel::Task::_task_t::awake()
     return (state > NEW && state < SLEEP);
 }
 
-uint64_t Kernel::Task::GetID()
-{
-    return _task->id;
-}
-
 uint64_t Kernel::Task::GetDelta()
 {
     return _task->delta;

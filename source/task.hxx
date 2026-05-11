@@ -18,7 +18,6 @@ struct Kernel::Task::_task_t
         END
     } state = NEW;
 
-    uint64_t id = 0;
     uint64_t wait = 0;
     uint64_t delta = 0;
 

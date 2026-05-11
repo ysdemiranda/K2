@@ -68,11 +68,6 @@ class Kernel::Task
     /// @brief Ends the task, priming it to be removed from the schedule
     void End();
 
-    /// @brief Retrieves the kernel-issued ID of the Task or 0 if the task was not \
-    /// @brief introduced to the kernel
-    /// @return ID of task, 0 if none issued or revoked
-    uint64_t GetID();
-
     /// @brief Retrieves nanoseconds past since last payload execution.
     /// @return Unsigned 64-bit integer nanoseconds past
     uint64_t GetDelta();

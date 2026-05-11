@@ -89,7 +89,6 @@ void Kernel::Schedule::_sched_t::run(uint64_t cdelta, uint64_t rt)
             break;
         case Task::_task_t::END:
             slot->task->Clean();
-            t->id = 0;
             t->delta = 0;
             t->wait = 0;
             t->state = Task::_task_t::NEW;
@@ -103,16 +102,13 @@ void Kernel::Schedule::_sched_t::run(uint64_t cdelta, uint64_t rt)
     }
 }
 
-uint64_t Kernel::Schedule::Load(Task *t)
+void Kernel::Schedule::Load(Task *t)
 {
-    if (t == nullptr || t->_task->id)
-        return 0;
+    if (t == nullptr || t->_task->state != Task::_task_t::NEW)
+        return;
 
     if (_sched->occupied == _sched->num_slots)
-        return 0;
-
-    uint64_t new_id = _sched->idctr++;
-    t->_task->id = new_id;
+        return;
 
     for (uint64_t i = 0; i < _sched->num_slots; i++)
     {
@@ -124,7 +120,7 @@ uint64_t Kernel::Schedule::Load(Task *t)
         break;
     }
 
-    return new_id;
+    return;
 }
 
 uint64_t Kernel::Schedule::Count()

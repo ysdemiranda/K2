@@ -18,8 +18,7 @@ class Kernel::Schedule
   public:
     /// @brief Loads a task into the kernel schedule
     /// @param taskptr pointer to task to load
-    /// @return generated task ID or 0 if task could not be loaded
-    uint64_t Load(Task *);
+    void Load(Task *);
 
     /// @brief Number of task instances loaded in the kernel schedule
     /// @return Loaded task count
